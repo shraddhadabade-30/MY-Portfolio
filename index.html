@@ -13,7 +13,7 @@
       --bg: #0A0D14;
       --surface-1: #121722;
       --surface-2: #1A2130;
-      --surface-glass: rgba(18, 23, 34, 0.8);
+      --surface-glass: rgba(18, 23, 34, 0.85);
       --border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(79, 209, 197, 0.3);
       --text: #F1F5F9;
@@ -37,7 +37,7 @@
       --bg: #F8FAFC;
       --surface-1: #FFFFFF;
       --surface-2: #F1F5F9;
-      --surface-glass: rgba(255, 255, 255, 0.88);
+      --surface-glass: rgba(255, 255, 255, 0.9);
       --border: rgba(0, 0, 0, 0.08);
       --border-accent: rgba(14, 165, 233, 0.3);
       --text: #0F172A;
@@ -838,8 +838,8 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(10px);
       z-index: 2000;
       display: flex;
       align-items: center;
@@ -857,7 +857,7 @@
 
     .modal-container {
       background: var(--surface-1);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       max-width: 900px;
       width: 100%;
@@ -935,6 +935,15 @@
     .toast.show {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    /* Interactive Demo Simulator styling */
+    .demo-sim-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
     }
 
     /* Footer */
@@ -1122,9 +1131,9 @@
             <span class="tech-tag">AWS</span>
           </div>
           <div class="flagship-links">
-            <a href="https://earthscan-bharat.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-              ↗ Live Demo
-            </a>
+            <button onclick="openDemoModal('earthscan')" class="btn btn-primary btn-sm">
+              ▶ Interactive Live Demo
+            </button>
             <a href="https://github.com/shraddhadabade-30/EarthScan-Bharat-Smart-Land-Intelligence-Platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
               ↗ GitHub Repository
             </a>
@@ -1168,7 +1177,7 @@
             </div>
             <div class="project-footer">
               <div class="project-links-row">
-                <a href="https://earthscan-bharat.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">↗ Live Demo</a>
+                <button onclick="openDemoModal('earthscan')" class="btn btn-outline btn-sm">▶ Live Demo</button>
                 <a href="https://github.com/shraddhadabade-30/EarthScan-Bharat-Smart-Land-Intelligence-Platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
               </div>
             </div>
@@ -1196,7 +1205,7 @@
             </div>
             <div class="project-footer">
               <div class="project-links-row">
-                <a href="https://neirp.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">↗ Live Demo</a>
+                <button onclick="openDemoModal('neirp')" class="btn btn-outline btn-sm">▶ Live Demo</button>
                 <a href="https://github.com/shraddhadabade-30/NEIRP-National-Electoral-Intelligence-Revision-Platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
               </div>
             </div>
@@ -1224,8 +1233,8 @@
             </div>
             <div class="project-footer">
               <div class="project-links-row">
-                <a href="https://ecowaste.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">↗ Live Demo</a>
-                <a href="https://github.com/shraddhadabade-30/EcoWaste--Waste-Management-Portal" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
+                <button onclick="openDemoModal('ecowaste')" class="btn btn-outline btn-sm">▶ Live Demo</button>
+                <a href="https://github.com/shraddhadabade-30/EcoWaste---Waste-Management-Portal" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
               </div>
             </div>
           </div>
@@ -1252,8 +1261,8 @@
             </div>
             <div class="project-footer">
               <div class="project-links-row">
-                <a href="https://github.com/shraddhadabade-30/Bahmni-Healthcare" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">↗ Live Demo</a>
-                <a href="https://github.com/shraddhadabade-30/Bahmni-Healthcare" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
+                <button onclick="openDemoModal('bahmni')" class="btn btn-outline btn-sm">▶ Live Demo</button>
+                <a href="https://github.com/shraddhadabade-30/CampusConnect" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">↗ GitHub</a>
               </div>
             </div>
           </div>
@@ -1572,6 +1581,16 @@
     </div>
   </div>
 
+  <!-- Interactive Project Live Demo Modal -->
+  <div class="modal-overlay" id="project-demo-modal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeDemoModal()">✕</button>
+      <div id="demo-modal-body">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- Admin Contact Messages Database Modal -->
   <div class="modal-overlay" id="admin-db-modal">
     <div class="modal-container">
@@ -1675,6 +1694,118 @@
     }
     function closeResumeModal() {
       document.getElementById('resume-modal').classList.remove('active');
+    }
+
+    // Interactive Live Demo Modal Data & Functions
+    const PROJECT_DEMOS = {
+      earthscan: {
+        title: "EarthScan Bharat – Smart Land Intelligence Platform",
+        badge: "C-DAC Final Flagship Project",
+        repo: "https://github.com/shraddhadabade-30/EarthScan-Bharat-Smart-Land-Intelligence-Platform",
+        img: "img/EarthScan.jpg",
+        desc: "Full-stack Smart Land Intelligence Platform enabling farmers and land buyers to make data-driven decisions using land analysis, groundwater information, borewell feasibility, mandi prices, government schemes, crop recommendations, and investment analysis.",
+        tech: ["ASP.NET Core", "Spring Boot", "React.js", "MySQL", "EF Core", "Spring Data JPA", "Hibernate", "JWT", "Docker", "AWS"],
+        simTitle: "🌾 Interactive Land & Groundwater Intelligence Simulator",
+        simDesc: "Select a region below to run real-time land suitability, groundwater depth feasibility, and crop yield recommendation algorithms:",
+        simOptions: [
+          { region: "Maharashtra (Nashik District)", groundwater: "14.2m Depth (Optimal)", crop: "Pomegranate, Grapes, Wheat", mandi: "₹2,350/q (+2.5%)" },
+          { region: "Punjab (Ludhiana District)", groundwater: "18.5m Depth (Moderate)", crop: "Paddy Rice, Wheat, Mustard", mandi: "₹5,800/q (+1.2%)" },
+          { region: "Rajasthan (Jaipur District)", groundwater: "26.8m Depth (Deep)", crop: "Pearl Millet (Bajra), Gram", mandi: "₹1,980/q (+3.0%)" }
+        ]
+      },
+      neirp: {
+        title: "NEIRP – National Electoral Intelligence Platform",
+        badge: "Academic Project",
+        repo: "https://github.com/shraddhadabade-30/NEIRP-National-Electoral-Intelligence-Revision-Platform",
+        img: "img/NEIRP.jpg",
+        desc: "Full-stack electoral revision platform to automate PDF electoral roll ingestion, OCR-based data extraction, fuzzy matching, and household relationship clustering.",
+        tech: ["C#", "ASP.NET Core", "React.js", "Python", "FastAPI", "PostgreSQL", "JWT", "Docker"],
+        simTitle: "📑 Interactive Electoral Roll OCR Ingestion Simulator",
+        simDesc: "Simulate automatic PDF electoral roll ingestion and household fuzzy clustering:",
+        simOptions: [
+          { region: "Constituency Roll 104 (PDF File: 74MB)", parsed: "1,452,389 Voter Records Processed", accuracy: "99.7% Accuracy", clusters: "342,110 Households Clustered" },
+          { region: "Constituency Roll 208 (PDF File: 112MB)", parsed: "2,198,400 Voter Records Processed", accuracy: "99.5% Accuracy", clusters: "512,040 Households Clustered" }
+        ]
+      },
+      ecowaste: {
+        title: "EcoWaste – Waste Management Portal",
+        badge: "Full Stack Civic Web App",
+        repo: "https://github.com/shraddhadabade-30/EcoWaste---Waste-Management-Portal",
+        img: "img/EcoWaste.png",
+        desc: "Full-stack Waste Management Portal enabling citizens to register waste complaints and pickup requests while allowing administrators and staff to manage assignments, complaint resolution, and collection operations.",
+        tech: ["Java", "Spring Boot", "Spring Security", "React.js", "JWT", "Spring Data JPA", "Hibernate", "MySQL", "Maven"],
+        simTitle: "♻️ Interactive Waste Pickup & Complaint Simulator",
+        simDesc: "Simulate registering a citizen pickup request with automated staff dispatch:",
+        simOptions: [
+          { type: "Wet & Organic Waste Pickup", location: "Sector 14, Kharghar, Navi Mumbai", status: "Assigned to Vehicle #MH-43-8921", time: "Est. Pickup: 45 Mins" },
+          { type: "E-Waste / Recyclables Pickup", location: "SIES College Road, Nerul, Navi Mumbai", status: "Dispatched Collection Staff", time: "Est. Pickup: 20 Mins" }
+        ]
+      },
+      bahmni: {
+        title: "Bahmni Healthcare Management System",
+        badge: "PLIT Solutions LLP • Industry Experience",
+        repo: "https://github.com/shraddhadabade-30/CampusConnect",
+        img: "img/Bahmni.jpg",
+        desc: "Enterprise healthcare data integration involving OpenMRS, OpenELIS, and Odoo platforms. Created dashboards for clinical analytics, patient tracking, healthcare reporting, and operational metrics using SQL & Metabase.",
+        tech: ["OpenMRS", "OpenELIS", "Odoo", "SQL", "Metabase", "Data Analytics"],
+        simTitle: "🏥 Interactive Clinical Analytics Simulator",
+        simDesc: "Select clinical dashboard view to inspect aggregated healthcare metrics:",
+        simOptions: [
+          { metric: "Patient Admissions & Outpatient Trends", count: "2,458 Active Patients Analyzed", outcome: "92% Discharged Clean" },
+          { metric: "OpenELIS Lab Test Analytics", count: "12,109 Lab Tests Processed", outcome: "100% Data Synchronized across OpenMRS & Odoo" }
+        ]
+      }
+    };
+
+    function openDemoModal(key) {
+      const demo = PROJECT_DEMOS[key];
+      if (!demo) return;
+
+      const body = document.getElementById('demo-modal-body');
+      let techHtml = demo.tech.map(t => `<span class="tech-tag">${t}</span>`).join(' ');
+      
+      let simOptionsHtml = demo.simOptions.map((opt, i) => {
+        let keys = Object.keys(opt);
+        let detailsStr = keys.map(k => `<strong>${k.toUpperCase()}:</strong> ${opt[k]}`).join(' | ');
+        return `<div style="background:var(--surface-1); padding:0.85rem 1rem; border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:0.6rem; font-size:0.875rem;">
+          ${detailsStr}
+        </div>`;
+      }).join('');
+
+      body.innerHTML = `
+        <span class="flagship-badge" style="margin-bottom:0.8rem;">${demo.badge}</span>
+        <h2 style="font-size:1.75rem; font-weight:800; margin-bottom:0.8rem;">${demo.title}</h2>
+        
+        <div style="margin-bottom:1.5rem; border-radius:var(--radius-md); overflow:hidden; max-height:280px; border:1px solid var(--border);">
+          <img src="${demo.img}" alt="${demo.title}" style="width:100%; height:100%; object-fit:cover;" />
+        </div>
+
+        <p style="color:var(--text-dim); margin-bottom:1.2rem; font-size:0.95rem;">${demo.desc}</p>
+
+        <div style="margin-bottom:1.2rem;">
+          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem;">Tech Stack & Architecture:</h4>
+          <div class="tech-tags">${techHtml}</div>
+        </div>
+
+        <div class="demo-sim-box">
+          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; color:var(--text);">${demo.simTitle}</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1rem;">${demo.simDesc}</p>
+          ${simOptionsHtml}
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border);">
+          <a href="${demo.repo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            ↗ Open Source Repository on GitHub
+          </a>
+          <button onclick="closeDemoModal()" class="btn btn-secondary">Close Demo Window</button>
+        </div>
+      `;
+
+      document.getElementById('project-demo-modal').classList.add('active');
+    }
+
+    function closeDemoModal() {
+      document.getElementById('project-demo-modal').classList.remove('active');
     }
 
     // Local DB Contact Storage Engine
