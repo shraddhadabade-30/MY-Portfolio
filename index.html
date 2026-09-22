@@ -792,26 +792,15 @@
 
     /* Colorful Simple & Clean Contact Us Section */
     .contact-container-box {
-      background: linear-gradient(135deg, rgba(19, 26, 42, 0.9) 0%, rgba(28, 38, 59, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(19, 26, 42, 0.95) 0%, rgba(28, 38, 59, 0.98) 100%);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 3.5rem;
-      max-width: 900px;
+      max-width: 950px;
       margin: 0 auto;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
-    }
-
-    .contact-container-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     .contact-header {
@@ -867,6 +856,24 @@
     .form-textarea {
       resize: vertical;
       min-height: 120px;
+    }
+
+    /* Messages Received In-Page Display Box */
+    .inpage-msg-box {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .msg-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--cyan);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
     }
 
     /* Modal */
@@ -1056,7 +1063,7 @@
           <svg id="moon-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg id="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
-        <button onclick="openResumeModal()" class="btn btn-primary btn-sm">Resume</button>
+        <a href="Shraddha_Dabade_Resume.pdf" download="Shraddha_Dabade_Resume.pdf" class="btn btn-primary btn-sm">📥 Resume PDF</a>
         <button onclick="openAdminDbModal()" class="btn btn-secondary btn-sm" title="View Contact Messages DB">
           💾 Messages DB (<span id="contact-count">0</span>)
         </button>
@@ -1089,10 +1096,10 @@
             Explore Projects
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </a>
-          <button onclick="openResumeModal()" class="btn btn-secondary">
+          <a href="Shraddha_Dabade_Resume.pdf" download="Shraddha_Dabade_Resume.pdf" class="btn btn-secondary">
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            View / Download Resume
-          </button>
+            Download Resume PDF
+          </a>
           <a href="https://github.com/shraddhadabade-30/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             GitHub Profile
           </a>
@@ -1497,7 +1504,7 @@
     </div>
   </section>
 
-  <!-- Simple, Colorful & 100% Working Contact Us Section -->
+  <!-- Colorful Simple & Clean Contact Us Section -->
   <section id="contact" style="padding: 90px 0;">
     <div class="container">
       <div class="contact-container-box">
@@ -1511,14 +1518,14 @@
 
         <!-- Quick Working Action Buttons -->
         <div class="contact-action-pills">
-          <a href="mailto:shraddhaadabade96@gmail.com?subject=Inquiry%20from%20Portfolio&body=Hi%20Shraddha," class="btn btn-primary">
-            ✉️ Send Direct Email
-          </a>
-          <button onclick="copyEmail()" class="btn btn-secondary">
-            📋 Copy Email (shraddhaadabade96@gmail.com)
+          <button onclick="copyEmail()" class="btn btn-primary">
+            ✉️ Copy Email (shraddhaadabade96@gmail.com)
           </button>
-          <a href="tel:+918928694253" class="btn btn-outline">
+          <a href="tel:+918928694253" class="btn btn-secondary">
             📞 Call +91 8928694253
+          </a>
+          <a href="Shraddha_Dabade_Resume.pdf" download="Shraddha_Dabade_Resume.pdf" class="btn btn-outline">
+            📥 Download Resume PDF
           </a>
         </div>
 
@@ -1551,6 +1558,17 @@
           </button>
         </form>
 
+        <!-- In-Page Messages Log Box -->
+        <div class="inpage-msg-box" id="inpage-msg-box">
+          <h3 style="font-size: 1.1rem; font-weight: 800; display:flex; justify-content:space-between; align-items:center;">
+            <span>📬 Recent Contact Submissions Logged In Database</span>
+            <button onclick="openAdminDbModal()" class="btn btn-secondary btn-sm" style="font-size:0.75rem;">View Full DB</button>
+          </h3>
+          <div id="inpage-msg-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1569,7 +1587,7 @@
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
         <h2 style="font-size: 1.5rem; font-weight: 800;">Shraddha Dabade — Resume</h2>
-        <button onclick="window.print()" class="btn btn-primary btn-sm">🖨️ Print / Save PDF</button>
+        <a href="Shraddha_Dabade_Resume.pdf" download="Shraddha_Dabade_Resume.pdf" class="btn btn-primary btn-sm">📥 Download PDF File</a>
       </div>
 
       <div style="font-size: 0.95rem; line-height: 1.6; color: var(--text-dim);">
@@ -1586,7 +1604,7 @@
 
         <h4 style="color: var(--cyan); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; margin: 1.2rem 0 0.6rem 0;">TECHNICAL SKILLS</h4>
         <p><strong>Languages:</strong> Java, C++, C#, SQL, Python</p>
-        <p><strong>Frontend:</strong> React.js, HTML, CSS, JavaScript</p>
+        <p><strong>Frontend:</strong> React.js, HTML, CSS</p>
         <p><strong>Backend:</strong> Spring Boot, Spring Security, ASP.NET Core, REST APIs</p>
         <p><strong>Databases:</strong> MySQL, MongoDB, PostgreSQL</p>
         <p><strong>Tools:</strong> Git, GitHub, Docker, AWS, JWT, Maven, EF Core, Hibernate, Power BI, Metabase</p>
@@ -1845,6 +1863,7 @@
     function saveContactsDB(records) {
       localStorage.setItem(DB_KEY, JSON.stringify(records));
       updateDBBadgeCount();
+      renderInPageMessages();
     }
 
     function updateDBBadgeCount() {
@@ -1853,8 +1872,31 @@
       if (badge) badge.textContent = records.length;
     }
 
-    // Initial Badge update
+    function renderInPageMessages() {
+      const list = document.getElementById('inpage-msg-list');
+      if (!list) return;
+      const records = getContactsDB();
+      if (!records.length) {
+        list.innerHTML = `<p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.8rem;">No contact messages received yet. Submit the form above to log a message!</p>`;
+        return;
+      }
+      let html = '';
+      records.slice(0, 3).forEach(r => {
+        html += `<div class="msg-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+            <strong style="color:var(--text); font-size:0.9rem;">${escapeHtml(r.name)} (${escapeHtml(r.email)})</strong>
+            <span style="color:var(--accent); font-size:0.75rem;">${escapeHtml(r.timestamp)}</span>
+          </div>
+          <div style="font-weight:600; color:var(--cyan); font-size:0.85rem; margin-bottom:0.25rem;">Subject: ${escapeHtml(r.subject)}</div>
+          <p style="color:var(--text-dim); font-size:0.85rem;">"${escapeHtml(r.message)}"</p>
+        </div>`;
+      });
+      list.innerHTML = html;
+    }
+
+    // Initial Load
     updateDBBadgeCount();
+    renderInPageMessages();
 
     function handleContactSubmit(e) {
       e.preventDefault();
@@ -1880,18 +1922,12 @@
       records.unshift(newRecord);
       saveContactsDB(records);
 
-      // Trigger mailto backup so user can send immediately in mail app
-      const mailtoUrl = `mailto:shraddhaadabade96@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
-
-' + message)}`;
-      
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = "🚀 Send Message & Save to Database";
         document.getElementById('contact-form').reset();
-        showToast('Message saved in database! Opening mail app...');
-        window.location.href = mailtoUrl;
-      }, 600);
+        showToast('✅ Message recorded and displayed below!');
+      }, 500);
     }
 
     // Admin DB Modal Functions
@@ -1971,6 +2007,7 @@
       if (confirm('Are you sure you want to clear all stored contact messages from database?')) {
         localStorage.removeItem(DB_KEY);
         updateDBBadgeCount();
+        renderInPageMessages();
         renderDBRecords();
         showToast('Database cleared');
       }
