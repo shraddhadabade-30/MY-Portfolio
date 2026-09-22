@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ===================== DARK THEME (DEFAULT) ===================== */
     :root {
       --bg: #0B0F19;
       --surface-1: #131A2A;
@@ -20,7 +21,7 @@
       --text-dim: #94A3B8;
       --text-muted: #64748B;
       
-      /* Vibrant Accent Palette */
+      /* Vibrant Accents */
       --cyan: #06B6D4;
       --teal: #10B981;
       --purple: #8B5CF6;
@@ -29,9 +30,9 @@
       --blue: #3B82F6;
       --accent: #4FD1C5;
       
-      --accent-glow: rgba(79, 209, 197, 0.3);
-      --purple-glow: rgba(139, 92, 246, 0.3);
-      --amber-glow: rgba(245, 158, 11, 0.25);
+      --accent-glow: rgba(79, 209, 197, 0.25);
+      --purple-glow: rgba(139, 92, 246, 0.25);
+      --amber-glow: rgba(245, 158, 11, 0.2);
       
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -41,18 +42,31 @@
       --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    [data-theme="light"] {
-      --bg: #F8FAFC;
+    /* ===================== LIGHT THEME OVERRIDES ===================== */
+    html[data-theme="light"] {
+      --bg: #F1F5F9;
       --surface-1: #FFFFFF;
-      --surface-2: #F1F5F9;
+      --surface-2: #E2E8F0;
       --surface-glass: rgba(255, 255, 255, 0.92);
-      --border: rgba(0, 0, 0, 0.08);
-      --border-accent: rgba(14, 165, 233, 0.3);
+      --border: rgba(15, 23, 42, 0.12);
+      --border-accent: rgba(14, 165, 233, 0.4);
       --text: #0F172A;
-      --text-dim: #475569;
+      --text-dim: #334155;
       --text-muted: #64748B;
+      
+      --cyan: #0284C7;
+      --teal: #059669;
+      --purple: #7C3AED;
+      --amber: #D97706;
+      --rose: #E11D48;
+      --blue: #2563EB;
       --accent: #0D9488;
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      
+      --accent-glow: rgba(14, 165, 233, 0.15);
+      --purple-glow: rgba(124, 58, 237, 0.12);
+      --amber-glow: rgba(217, 119, 6, 0.12);
+      
+      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -79,7 +93,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Dynamic Colorful Grid Background */
+    /* Dynamic Grid Background */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -186,7 +200,7 @@
       transform: rotate(15deg);
     }
 
-    /* Vibrant Buttons */
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -204,14 +218,14 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 100%);
-      color: #0A0D14;
+      color: #FFFFFF;
       box-shadow: 0 4px 20px var(--accent-glow);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 25px var(--accent-glow);
-      filter: brightness(1.1);
+      filter: brightness(1.08);
     }
 
     .btn-secondary {
@@ -337,7 +351,7 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 2px solid var(--border-accent);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
       position: relative;
       background: var(--surface-1);
       transition: var(--transition);
@@ -558,7 +572,7 @@
     .filter-btn:hover,
     .filter-btn.active {
       background: linear-gradient(135deg, var(--cyan), var(--teal));
-      color: #0A0D14;
+      color: #FFFFFF;
       border-color: var(--cyan);
     }
 
@@ -792,15 +806,16 @@
 
     /* Colorful Simple & Clean Contact Us Section */
     .contact-container-box {
-      background: linear-gradient(135deg, rgba(19, 26, 42, 0.95) 0%, rgba(28, 38, 59, 0.98) 100%);
+      background: var(--surface-1);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 3.5rem;
       max-width: 950px;
       margin: 0 auto;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
+      transition: var(--transition);
     }
 
     .contact-header {
@@ -837,7 +852,7 @@
 
     .form-input, .form-textarea {
       width: 100%;
-      background: var(--surface-1);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
       padding: 0.85rem 1.1rem;
@@ -860,7 +875,7 @@
 
     /* Messages Received In-Page Display Box */
     .inpage-msg-box {
-      background: var(--surface-1);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 1.5rem;
@@ -868,7 +883,7 @@
     }
 
     .msg-card {
-      background: var(--surface-2);
+      background: var(--surface-1);
       border: 1px solid var(--border);
       border-left: 4px solid var(--cyan);
       border-radius: var(--radius-sm);
@@ -908,6 +923,7 @@
       padding: 2.5rem;
       position: relative;
       box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      color: var(--text);
     }
 
     .modal-close {
@@ -1658,22 +1674,32 @@
   </div>
 
   <script>
-    // Theme Toggle
+    // Theme Toggle Functionality
     const themeBtn = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
 
-    themeBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      if (newTheme === 'light') {
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio_theme', theme);
+      if (theme === 'light') {
         sunIcon.style.display = 'block';
         moonIcon.style.display = 'none';
       } else {
         sunIcon.style.display = 'none';
         moonIcon.style.display = 'block';
       }
+    }
+
+    // Load stored theme or default to dark
+    const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+    setTheme(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+      showToast('Switched to ' + newTheme.toUpperCase() + ' mode');
     });
 
     // Typing Subtitle Animation
@@ -1885,7 +1911,7 @@
         html += `<div class="msg-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
             <strong style="color:var(--text); font-size:0.9rem;">${escapeHtml(r.name)} (${escapeHtml(r.email)})</strong>
-            <span style="color:var(--accent); font-size:0.75rem;">${escapeHtml(r.timestamp)}</span>
+            <span style="color:var(--cyan); font-size:0.75rem;">${escapeHtml(r.timestamp)}</span>
           </div>
           <div style="font-weight:600; color:var(--cyan); font-size:0.85rem; margin-bottom:0.25rem;">Subject: ${escapeHtml(r.subject)}</div>
           <p style="color:var(--text-dim); font-size:0.85rem;">"${escapeHtml(r.message)}"</p>
