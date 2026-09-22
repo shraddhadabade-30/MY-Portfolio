@@ -43,30 +43,117 @@
     }
 
     /* ===================== LIGHT THEME OVERRIDES ===================== */
-    html[data-theme="light"] {
-      --bg: #F1F5F9;
-      --surface-1: #FFFFFF;
-      --surface-2: #E2E8F0;
-      --surface-glass: rgba(255, 255, 255, 0.92);
-      --border: rgba(15, 23, 42, 0.12);
-      --border-accent: rgba(14, 165, 233, 0.4);
-      --text: #0F172A;
-      --text-dim: #334155;
-      --text-muted: #64748B;
+    html[data-theme="light"],
+    body.light-theme {
+      --bg: #F8FAFC !important;
+      --surface-1: #FFFFFF !important;
+      --surface-2: #F1F5F9 !important;
+      --surface-glass: rgba(255, 255, 255, 0.95) !important;
+      --border: #E2E8F0 !important;
+      --border-accent: rgba(14, 165, 233, 0.4) !important;
+      --text: #0F172A !important;
+      --text-dim: #334155 !important;
+      --text-muted: #64748B !important;
       
-      --cyan: #0284C7;
-      --teal: #059669;
-      --purple: #7C3AED;
-      --amber: #D97706;
-      --rose: #E11D48;
-      --blue: #2563EB;
-      --accent: #0D9488;
+      --cyan: #0284C7 !important;
+      --teal: #059669 !important;
+      --purple: #7C3AED !important;
+      --amber: #D97706 !important;
+      --rose: #E11D48 !important;
+      --blue: #2563EB !important;
+      --accent: #0D9488 !important;
       
-      --accent-glow: rgba(14, 165, 233, 0.15);
-      --purple-glow: rgba(124, 58, 237, 0.12);
-      --amber-glow: rgba(217, 119, 6, 0.12);
+      --accent-glow: rgba(14, 165, 233, 0.15) !important;
+      --purple-glow: rgba(124, 58, 237, 0.12) !important;
+      --amber-glow: rgba(217, 119, 6, 0.12) !important;
       
-      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
+      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1) !important;
+    }
+
+    /* Explicit Light Mode Element Overrides */
+    html[data-theme="light"] body,
+    body.light-theme {
+      background-color: #F8FAFC !important;
+      color: #0F172A !important;
+    }
+
+    html[data-theme="light"] header,
+    body.light-theme header {
+      background: rgba(255, 255, 255, 0.92) !important;
+      border-bottom-color: #E2E8F0 !important;
+    }
+
+    html[data-theme="light"] .flagship-card,
+    html[data-theme="light"] .project-card,
+    html[data-theme="light"] .skill-box,
+    html[data-theme="light"] .timeline-card,
+    html[data-theme="light"] .contact-container-box,
+    html[data-theme="light"] .modal-container,
+    html[data-theme="light"] .stats-strip,
+    html[data-theme="light"] .pill,
+    html[data-theme="light"] .theme-toggle,
+    html[data-theme="light"] .contact-info-card,
+    html[data-theme="light"] .contact-form-card,
+    body.light-theme .flagship-card,
+    body.light-theme .project-card,
+    body.light-theme .skill-box,
+    body.light-theme .timeline-card,
+    body.light-theme .contact-container-box,
+    body.light-theme .modal-container,
+    body.light-theme .stats-strip,
+    body.light-theme .pill,
+    body.light-theme .theme-toggle,
+    body.light-theme .contact-info-card,
+    body.light-theme .contact-form-card {
+      background-color: #FFFFFF !important;
+      color: #0F172A !important;
+      border-color: #E2E8F0 !important;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    html[data-theme="light"] .form-input,
+    html[data-theme="light"] .form-textarea,
+    html[data-theme="light"] .btn-secondary,
+    html[data-theme="light"] .filter-btn,
+    html[data-theme="light"] .msg-card,
+    html[data-theme="light"] .demo-sim-box,
+    html[data-theme="light"] .inpage-msg-box,
+    body.light-theme .form-input,
+    body.light-theme .form-textarea,
+    body.light-theme .btn-secondary,
+    body.light-theme .filter-btn,
+    body.light-theme .msg-card,
+    body.light-theme .demo-sim-box,
+    body.light-theme .inpage-msg-box {
+      background-color: #F1F5F9 !important;
+      color: #0F172A !important;
+      border-color: #CBD5E1 !important;
+    }
+
+    html[data-theme="light"] h1, html[data-theme="light"] h2, html[data-theme="light"] h3, html[data-theme="light"] h4,
+    html[data-theme="light"] .hero-title, html[data-theme="light"] .section-title, html[data-theme="light"] .flagship-title,
+    html[data-theme="light"] .project-title, html[data-theme="light"] .timeline-role, html[data-theme="light"] .logo,
+    body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4,
+    body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .flagship-title,
+    body.light-theme .project-title, body.light-theme .timeline-role, body.light-theme .logo {
+      color: #0F172A !important;
+    }
+
+    html[data-theme="light"] .hero-bio,
+    html[data-theme="light"] .flagship-desc,
+    html[data-theme="light"] .project-desc,
+    html[data-theme="light"] .timeline-desc,
+    html[data-theme="light"] .timeline-bullets li,
+    html[data-theme="light"] .flagship-bullets li,
+    html[data-theme="light"] .hero-subtitle,
+    body.light-theme .hero-bio,
+    body.light-theme .flagship-desc,
+    body.light-theme .project-desc,
+    body.light-theme .timeline-desc,
+    body.light-theme .timeline-bullets li,
+    body.light-theme .flagship-bullets li,
+    body.light-theme .hero-subtitle {
+      color: #334155 !important;
     }
 
     * {
@@ -1075,7 +1162,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Theme">
           <svg id="moon-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg id="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
@@ -1674,33 +1761,43 @@
   </div>
 
   <script>
-    // Theme Toggle Functionality
-    const themeBtn = document.getElementById('theme-toggle');
-    const sunIcon = document.getElementById('sun-icon');
-    const moonIcon = document.getElementById('moon-icon');
-
-    function setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('portfolio_theme', theme);
-      if (theme === 'light') {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-      }
-    }
-
-    // Load stored theme or default to dark
-    const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
-    setTheme(savedTheme);
-
-    themeBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    // Global Theme Toggle Function
+    window.toggleTheme = function() {
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+      const currentTheme = htmlEl.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
+
+      htmlEl.setAttribute('data-theme', newTheme);
+      bodyEl.classList.toggle('light-theme', newTheme === 'light');
+      localStorage.setItem('portfolio_theme', newTheme);
+
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      if (newTheme === 'light') {
+        if (sunIcon) sunIcon.style.display = 'block';
+        if (moonIcon) moonIcon.style.display = 'none';
+      } else {
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (moonIcon) moonIcon.style.display = 'block';
+      }
+
       showToast('Switched to ' + newTheme.toUpperCase() + ' mode');
-    });
+    };
+
+    // Load stored theme on initial page load
+    (function initTheme() {
+      const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        if (sunIcon) sunIcon.style.display = 'block';
+        if (moonIcon) moonIcon.style.display = 'none';
+      }
+    })();
 
     // Typing Subtitle Animation
     const roles = ["Java & Spring Boot Engineer", "ASP.NET Core Developer", "Full-Stack React Specialist", "Data Analytics & Cloud Enthusiast"];
@@ -1710,6 +1807,7 @@
     const typingEl = document.getElementById('typing-text');
 
     function typeEffect() {
+      if (!typingEl) return;
       const currentRole = roles[roleIdx];
       if (isDeleting) {
         charIdx--;
@@ -2051,6 +2149,7 @@
     // Toast Notification
     function showToast(msg) {
       const toast = document.getElementById('toast');
+      if (!toast) return;
       document.getElementById('toast-msg').textContent = msg;
       toast.classList.add('show');
       setTimeout(() => {
